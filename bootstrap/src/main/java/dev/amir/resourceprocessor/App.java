@@ -6,7 +6,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan({
-        "dev.amir.resourceprocessor.configuration",
         "dev.amir.resourceprocessor.framework",
         "dev.amir.resourceprocessor.application",
         "dev.amir.resourceprocessor.domain"
