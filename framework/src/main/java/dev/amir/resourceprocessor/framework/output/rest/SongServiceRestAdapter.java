@@ -5,9 +5,11 @@ import dev.amir.resourceprocessor.domain.entity.Song;
 import dev.amir.resourceprocessor.framework.output.rest.client.SongServiceRestClient;
 import dev.amir.resourceprocessor.framework.output.rest.mapper.CreateSongRequestMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
-@Service
+@Slf4j
+@Component
 @RequiredArgsConstructor
 public class SongServiceRestAdapter implements SongServiceOutputPort {
 
@@ -17,7 +19,8 @@ public class SongServiceRestAdapter implements SongServiceOutputPort {
     @Override
     public Long saveSong(Song song) {
         var request = createSongRequestMapper.convert(song);
+        log.info("Saving [{}]", request);
         var response = songServiceRestClient.saveSong(request);
-        return response.getId();
+        return response.id();
     }
 }

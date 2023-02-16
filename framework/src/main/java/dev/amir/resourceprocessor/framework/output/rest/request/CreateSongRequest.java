@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateSongRequest {
+    private Long resourceId;
     private String name;
     private String artist;
     private String album;
-    private String length;
-    private Long resourceId;
     private Integer year;
+    private String length;
 }
 

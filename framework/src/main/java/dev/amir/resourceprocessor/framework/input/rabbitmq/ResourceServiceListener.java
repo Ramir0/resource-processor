@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class ResourceMessageListenerRabbitMqAdapter {
+public class ResourceServiceListener {
     private final ResourceService resourceService;
 
     @RabbitListener(queues = {"q.resource-process"})
