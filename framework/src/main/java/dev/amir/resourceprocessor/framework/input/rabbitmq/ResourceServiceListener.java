@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class ResourceServiceListener {
     private final ResourceService resourceService;
 
-    @RabbitListener(queues = {"q.resource-process"})
+    @RabbitListener(queues = {"${spring.rabbitmq.queues.resource-process}"})
     public void onResourceProcess(ProcessResourceMessage message) {
         log.info("Message received: {}", message);
         resourceService.processResource(message);
