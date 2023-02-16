@@ -15,7 +15,7 @@ public class ResourceServiceListener {
 
     @RabbitListener(queues = {"q.resource-process"})
     public void onResourceProcess(ProcessResourceMessage message) {
-        log.info("Process Resource message received: {}", message);
+        log.info("Message received: {}", message);
         resourceService.processResource(message);
     }
 }

@@ -16,7 +16,7 @@ public class ResourceDataServiceRestAdapter implements ResourceDataServiceOutput
 
     @Override
     public ResourceData getResourceDataById(Long resourceId) {
-        log.info("Requesting ResourceData by id: {}", resourceId);
+        log.info("Requesting ResourceData with Id: {}", resourceId);
         var request = new GetResourceDataRequest(resourceId);
         var response = resourceDataServiceRestClient.getResourceDataById(request);
         return ResourceData.builder()

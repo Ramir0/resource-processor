@@ -23,6 +23,6 @@ public class ResourceManagementInputPort implements ResourceManagementUseCase {
         var resourceData = retryExecutor.execute(() -> resourceDataServiceOutputPort.getResourceDataById(resourceId));
         var song = resourceDataParser.parse(resourceData);
         var songId = retryExecutor.execute(() -> songServiceOutputPort.saveSong(song));
-        log.info("SongId: {} processed based ResourceId: {}", songId, resourceId);
+        log.info("Song was created with Id: {} based ResourceData with Id: {}", songId, resourceId);
     }
 }

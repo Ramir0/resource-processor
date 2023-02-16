@@ -42,18 +42,25 @@ public class ResourceDataParserImpl implements ResourceDataParser {
     @Override
     public Song parse(ResourceData resourceData) {
         try {
+            log.info("Parsing ResourceData with Id: {}", resourceData.getId());
             var metadata = getMetadata(resourceData);
-            return Song.builder()
-                    .resourceId(resourceData.getId())
-                    .name(metadata.get(LABEL_NAME))
-                    .artist(metadata.get(LABEL_ARTIST))
-                    .album(metadata.get(LABEL_ALBUM))
-                    .year(Integer.parseInt(metadata.get(LABEL_YEAR)))
-                    .length(metadata.get(LABEL_LENGTH))
-                    .build();
+            var song = buildSong(resourceData.getId(), metadata);
+            log.info("Parsed {}", song);
+            return song;
         } catch (Exception exception) {
             throw new InvalidResourceException(resourceData.getId(), exception);
         }
+    }
+
+    private Song buildSong(Long resourceId, Metadata metadata) {
+        return Song.builder()
+                .resourceId(resourceId)
+                .name(metadata.get(LABEL_NAME))
+                .artist(metadata.get(LABEL_ARTIST))
+                .album(metadata.get(LABEL_ALBUM))
+                .year(Integer.parseInt(metadata.get(LABEL_YEAR)))
+                .length(metadata.get(LABEL_LENGTH))
+                .build();
     }
 
     private Metadata getMetadata(ResourceData resourceData) throws TikaException, IOException, SAXException {
