@@ -53,12 +53,14 @@ public class ResourceDataParserImpl implements ResourceDataParser {
     }
 
     private Song buildSong(Long resourceId, Metadata metadata) {
+        var yearString = metadata.get(LABEL_YEAR);
+        int year = Integer.parseInt(yearString.substring(0, 4));
         return Song.builder()
                 .resourceId(resourceId)
                 .name(metadata.get(LABEL_NAME))
                 .artist(metadata.get(LABEL_ARTIST))
                 .album(metadata.get(LABEL_ALBUM))
-                .year(Integer.parseInt(metadata.get(LABEL_YEAR)))
+                .year(year)
                 .length(metadata.get(LABEL_LENGTH))
                 .build();
     }
