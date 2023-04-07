@@ -3,20 +3,22 @@ server:
 
 services:
   resource-service:
-    url: http://localhost:8081
+    url: http://resource-service-container:8081
   song-service:
-    url: http://localhost:8082
+    url: http://song-service-container:8082
 
 spring:
+  profiles:
+    default: dev
   retry:
     max-attempts: 5
     initial-interval: 2000
     multiplier: 2
     max-interval: 30000
   rabbitmq:
-    host: localhost
+    host: resource-rabbitmq
     port: 5672
-    username: guest
-    password: guest
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASSWORD}
     queues:
       resource-process: q.resource-process
