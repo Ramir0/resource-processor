@@ -3,20 +3,24 @@ server:
 
 services:
   resource-service:
-    url: http://resource-service-container:8081
+    url: http://${GATEWAY_HOSTNAME}:8080/${RESOURCE_SERVICE_NAME}
   song-service:
-    url: http://song-service-container:8082
+    url: http://${GATEWAY_HOSTNAME}:8080/${SONG_SERVICE_NAME}
 
 spring:
+  application:
+    name: resource-processor
   profiles:
     default: dev
+  config:
+    import: optional:configserver:http://${CONFIG_SERVER_HOSTNAME}:8090
   retry:
     max-attempts: 5
     initial-interval: 2000
     multiplier: 2
     max-interval: 30000
   rabbitmq:
-    host: resource-rabbitmq
+    host: ${RABBITMQ_HOSTNAME}
     port: 5672
     username: ${RABBITMQ_USER}
     password: ${RABBITMQ_PASSWORD}

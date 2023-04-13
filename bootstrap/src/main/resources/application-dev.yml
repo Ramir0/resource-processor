@@ -5,15 +5,9 @@ services:
     url: http://localhost:8082
 
 spring:
-  retry:
-    max-attempts: 5
-    initial-interval: 2000
-    multiplier: 2
-    max-interval: 30000
+  config:
+    import: optional:configserver:http://localhost:8090
   rabbitmq:
     host: localhost
-    port: 5672
     username: guest
     password: guest
-    queues:
-      resource-process: q.resource-process

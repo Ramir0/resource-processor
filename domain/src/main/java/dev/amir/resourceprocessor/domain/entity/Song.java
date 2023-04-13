@@ -14,6 +14,6 @@ public class Song {
     private String name;
     private String artist;
     private String album;
-    private String length;
     private Integer year;
+    private String length;
 }

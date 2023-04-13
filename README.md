@@ -20,7 +20,7 @@ Please make sure that all of these dependencies are installed and configured cor
 - `mvn spring-boot:run -f bootstrap/pom.xml`
 ### Running from Dockerfile
 - `docker build --no-cache -t resource-processor:latest .`
-- `docker run -d --env-file .env --name resource-processor-container -p 8083:8083 --network resource-network resource-processor`
+- `docker run -d --env-file .env --name resource-processor -p 8083:8083 --network resource-network resource-processor`
 
 ## Running Tests
 
