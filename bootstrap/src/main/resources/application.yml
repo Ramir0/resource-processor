@@ -1,12 +1,5 @@
 server:
   port: 8083
-
-services:
-  resource-service:
-    url: http://${GATEWAY_HOSTNAME}:8080/${RESOURCE_SERVICE_NAME}
-  song-service:
-    url: http://${GATEWAY_HOSTNAME}:8080/${SONG_SERVICE_NAME}
-
 spring:
   application:
     name: resource-processor
@@ -26,3 +19,8 @@ spring:
     password: ${RABBITMQ_PASSWORD}
     queues:
       resource-process: q.resource-process
+services:
+  resource-service:
+    url: http://${RESOURCE_SERVICE_DOMAIN}
+  song-service:
+    url: http://${SONG_SERVICE_DOMAIN}
