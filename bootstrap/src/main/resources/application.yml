@@ -19,6 +19,9 @@ spring:
     password: ${RABBITMQ_PASSWORD}
     queues:
       resource-process: q.resource-process
+logging:
+  pattern:
+    level: "%5p [%X{traceId:-},%X{spanId:-}]"
 services:
   resource-service:
     url: http://${RESOURCE_SERVICE_DOMAIN}
