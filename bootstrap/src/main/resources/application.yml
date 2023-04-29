@@ -22,6 +22,11 @@ spring:
 logging:
   pattern:
     level: "%5p [%X{traceId:-},%X{spanId:-}]"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 services:
   resource-service:
     url: http://${RESOURCE_SERVICE_DOMAIN}
